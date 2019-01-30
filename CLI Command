@@ -1,0 +1,5 @@
+To generate module
+ng g module [module-name] --routing 
+
+ng new application 
+ng new application --routing 
