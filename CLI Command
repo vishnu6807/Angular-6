@@ -3,3 +3,8 @@ ng g module [module-name] --routing
 
 ng new application 
 ng new application --routing 
+
+
+To host angular application on angular sever
+ng s --host IP Address
+ng s --host 10.18.80.143 
