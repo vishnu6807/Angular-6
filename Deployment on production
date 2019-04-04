@@ -1,0 +1,15 @@
+First go the environment.prod.ts and put the baseURL as ip address of the application server on which we have planned to deploy application.
+
+
+run following command on node cmd
+ng build --prod
+
+if errors are there solve it otherwise new folder will be created named
+dict which contain build code for the application.
+
+go to normal commmand promnt and go till folder path of dict
+run follwing command
+jar cvf warname_to_create.war .
+ex jar cvf myapplication.war .  (space and dot after name)      
+
+
