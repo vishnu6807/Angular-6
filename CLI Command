@@ -1,3 +1,5 @@
+ng -v to check version of angular cli
+
 To generate module
 ng g module [module-name] --routing 
 
@@ -8,3 +10,11 @@ ng new application --routing
 To host angular application on angular sever
 ng s --host IP Address
 ng s --host 10.18.80.143 
+
+npm install @angular/cli -g
+
+ng build --prod
+ng s -o to open server on browser
+npm config  --to set proxy related 
+npm help
+
