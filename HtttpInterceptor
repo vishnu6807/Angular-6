@@ -1,0 +1,32 @@
+https://medium.com/@sub.metu/angular-http-interceptors-fdda14a57660
+
+it is used when we have to mutate the http request before leaving the browser.
+Used in AD to authenticate to add token for each http request.
+
+In app.module
+
+import { AuthInterceptor } from './Services/auth-interceptor';
+In provider array
+{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+
+
+import { Injectable } from '@angular/core';
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+@Injectable()
+export class AuthInterceptor implements HttpInterceptor {
+
+    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        let user: any = localStorage.getItem('currentUser'); // you probably want to store it in localStorage or something
+        user = JSON.parse(user);
+        if (!user) {
+          return next.handle(req);
+        }
+        const token = user['token'];
+        const req1 = req.clone({
+          headers: req.headers.set('Authorization', `Bearer ${token}`),
+        });
+        return next.handle(req1);
+      }
+}
