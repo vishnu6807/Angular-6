@@ -17,4 +17,5 @@ ng build --prod
 ng s -o to open server on browser
 npm config  --to set proxy related 
 npm help
+ng g c componene_name -it ----to generate component with inline template
 
