@@ -1,0 +1,31 @@
+If user try to direct to particular just using the URL in broweser then it should not happans
+to prevent this we use CanActivate method of router.
+while routing it checks that wheather user is loggend in or not based on that it returns true/false
+
+
+
+auth.ts
+
+import { Injectable } from '@angular/core';
+import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+
+@Injectable()
+export class AuthGuard implements CanActivate {
+ constructor(private router: Router) { }
+ canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+  if ( localStorage.getItem('currentUser') ) {
+   // logged in so return true
+   return true;
+ }
+ // not logged in so redirect to login page with the return url
+ this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
+ return false;
+ }
+}
+
+
+{ path: 'Home', component: SideNavBarComponent, canActivate: [AuthGuard], data: { breadcrumb: 'Home' },
+   children: [
+    {path: 'DeviceManagement', component: ManageAssetComponent, data: { breadcrumb: 'Device Management'}},
+
+ ]},
