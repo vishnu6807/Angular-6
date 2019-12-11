@@ -19,3 +19,10 @@ npm config  --to set proxy related
 npm help
 ng g c componene_name -it ----to generate component with inline template
 
+
+
+ng new angular-pwa-app --service-worker
+We can also add the Angular Service Worker to an existing application using the following command:
+
+ng add @angular/pwa --project <name of project as in angular.json>
+
